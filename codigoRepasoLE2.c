@@ -77,12 +77,16 @@ void agregarProducto(struct producto productos[],int *contador ){
         printf("Ingrese el nombre del producto: ");
         scanf("%s",productos[*contador].nombre);
         limpiarBuffer();
+
         printf("Ingrese el código del producto: ");
         scanf("%d", &productos[*contador].id);
+
         printf("Ingrese la cantidad disponible: ");
         scanf("%d", &productos[*contador].stock);
+
         printf("Ingrese el precio del producto (use punto en vez de coma): ");
         scanf("%f", &productos[*contador].precio);
+        
         (*contador)++;
     }
     else printf("\033[0;31mEl inventario esta lleno. Deberás eliminar un producto si quieres añadir otro.\033[0m");
