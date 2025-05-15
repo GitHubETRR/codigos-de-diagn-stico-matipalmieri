@@ -14,16 +14,16 @@ typedef struct nodo {
 }nodo;
 
 nodo* CrearNodo(int);
-void AgregarFinal(nodo* first, int);
+void AgregarFinal(nodo** first, int);
 void MostrarLista(nodo* first);
 void LiberarLista(nodo* first);
 
 int main(){
-    nodo* lista = NULL //puntero que apunta al incio arranca apuntando a NULL
+    nodo* lista = NULL; //puntero que apunta al incio arranca apuntando a NULL
     AgregarFinal(&lista,VAL1);
-    AgregarFinal(&lista,VAL3); //agrego tres nodos al final
+    AgregarFinal(&lista,VAL2); //agrego tres nodos al final
     AgregarFinal(&lista,VAL3);
-    printf("- - - - LISTA ENLAZADA - - - -/n");
+    printf("\033[1;31m\033[1m- - - - LISTA ENLAZADA - - - -\033[0m\033[0m\n");
     MostrarLista(lista);
     LiberarLista(lista);
     return 0;
@@ -55,7 +55,7 @@ void MostrarLista(nodo*first){
         printf("%d->",actual->dato);
         actual = actual->siguiente; //avanza al siguiente nodo luego de haberlo impreso
     }
-    printf("NULL\n"); //por ej: 10->20->30->NULL
+    printf("NULL\n - - - - - - - - - - - - - - -"); //por ej: 10->20->30->NULL
 }
 
 void LiberarLista(nodo* first){
