@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "file_utils.h"
+#include "file.h"
 
 enum MENU{
     AGREGAR=1,
@@ -8,11 +8,11 @@ enum MENU{
     SALIR
 };
 
-int main() {
+int main(){
     int opcion;
     char nombre[100];
     do{
-        printf("\n- - - - Menu - - - -\n");
+        printf("\n\033[1;31m- - - - Menu - - - -\033[0m\n");
         printf("%d. Agregar nombre\n", AGREGAR);
         printf("%d. Mostrar nombres\n", MOSTRAR);
         printf("%d. Salir\n", SALIR);
@@ -34,7 +34,6 @@ int main() {
             default:
                 printf("Opcion no valida.\n");
         }
-    } while(opcion != 3);
-
+    }while(opcion != 3);
     return 0;
 }

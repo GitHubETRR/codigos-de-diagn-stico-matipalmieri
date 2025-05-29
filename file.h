@@ -1,2 +1,2 @@
-void guardar_nombre(const char *nombre);
+void guardar_nombre(char *nombre);
 void mostrar_nombres();
