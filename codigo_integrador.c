@@ -16,7 +16,8 @@ void AgregarContacto(const char* nombre, const char* telefono, const char* email
 void ListarContactos();
 void BuscarContacto(const char* nombreBuscado);
 void GuardarContactos(const char* archivo);
-
+void CargarContactos(const char* archivo);
+void LiberarContactos();
 
 contacto* lista = NULL
 
@@ -100,5 +101,37 @@ void BuscarContacto(const char* NombreBuscado){
 }
 
 void GuardarContacto(const char* archivo){
+    FILE* f = fopen(archivo, "w");
+    if(!f){
+        printf("No se pudo abrir el archivo.\n");
+        return;
+    }
+    contacto* actual = lista;
+    while(actual != NULL){
+        fprintf(f,"%s,%s,%s\n", actual->nombre, actual->telefono, actual->email);
+        actual = actual->siguiente;
+    }
+    fclose(f);
+}
 
+void cargarContactos(const char* archivo) {
+    FILE* f = fopen(archivo, "r");
+    if (!f) return;
+    char linea[3 * MAX];
+    while (fgets(linea, sizeof(linea), f)) {
+        char nombre[MAX], telefono[MAX], email[MAX];
+        if (sscanf(linea, "%99[^;];%99[^;];%99[^\n]", nombre, telefono, email) == 3){
+            agregarContacto(nombre, telefono, email);
+        }
+    }
+    fclose(f);
+}
+
+void liberarContactos() {
+    Contacto* actual = lista;
+    while (actual != NULL) {
+        Contacto* temp = actual;
+        actual = actual->siguiente;
+        free(temp);
+    }
 }
