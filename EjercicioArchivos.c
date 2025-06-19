@@ -44,7 +44,7 @@ int main(){
         getchar();//para sacar el salto de línea
 
         switch(eleccion){
-            case 1:
+            case AGREGAR:
                 printf("\nNombre: ");
                 fgets(nombre, MAX, stdin);
                 nombre[strcspn(nombre, "\n")] = '\0';
@@ -56,16 +56,16 @@ int main(){
                 email[strcspn(email, "\n")] = '\0';
                 AgregarContacto(nombre, telefono, email);
                 break;
-            case 2:
+            case LISTAR:
                 ListarContactos();
                 break;
-            case 3:
+            case BUSCAR:
                 printf("\nNombre para buscar: ");
                 fgets(nombre, MAX, stdin);
                 nombre[strcspn(nombre, "\n")] = '\0';
                 BuscarContacto(nombre);
                 break;
-            case 4:
+            case SALIR:
                 GuardarContactos(archivo);
                 LiberarContactos();
                 printf("\n\033[1;31mGuardado baa baaaiii\033[0m");
@@ -133,7 +133,7 @@ void GuardarContactos(const char* archivo){
     }
     contacto* actual = lista;
     while(actual != NULL){
-        fprintf(f,"%s,%s,%s\n", actual->nombre, actual->telefono, actual->email);
+        fprintf(f,"%s;%s;%s\n", actual->nombre, actual->telefono, actual->email);
         actual = actual->siguiente;
     }
     fclose(f);

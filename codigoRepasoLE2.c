@@ -12,6 +12,15 @@ operaciones:
 #define MAX_PRODUCTOS 5
 #define MAX_LETRAS 50
 
+
+enum MENU{
+    AGREGAR=1,
+    MOSTRAR,
+    ACTUALIZAR,
+    ELIMINAR,
+    SALIR
+};
+
 struct producto{
     char nombre[MAX_LETRAS];
     int id;
@@ -33,19 +42,19 @@ int main(){
         choice = bienvenida();
         limpiarBuffer();
         switch (choice){
-        case 1:
+        case AGREGAR:
             agregarProducto(productos,&contador);
             break;
-        case 2:
+        case MOSTRAR:
             mostrarInventario(productos,contador);
             break;
-        case 3:
+        case ACTUALIZAR:
             actualizarCantidad(productos,contador);
             break;
-        case 4:
+        case ELIMINAR:
             eliminarProducto(productos,&contador);
             break;
-        case 5:
+        case SALIR:
             printf("Saliendo...");
             break;
         default:
@@ -59,11 +68,11 @@ int bienvenida(){
     int choice;
     printf("\033[0;34mEste programa gestiona un inventario de productos de una tienda.\033[0m\n");
     printf("\033[0;36mIngrese:\033[0m\n");
-    printf("\033[0;32m(1)\033[0m Para agregar un producto. \n");
-    printf("\033[0;32m(2)\033[0m Para mostrar el inventario. \n");
-    printf("\033[0;32m(3)\033[0m Para actualizar el stock de un producto. \n");
-    printf("\033[0;32m(4)\033[0m Para eliminar un producto. \n");
-    printf("\033[0;32m(5)\033[0m Para salir del programa. \n");
+    printf("\033[0;32m(%d)\033[0m Para agregar un producto. \n", AGREGAR );
+    printf("\033[0;32m(%d)\033[0m Para mostrar el inventario. \n", MOSTRAR);
+    printf("\033[0;32m(%d)\033[0m Para actualizar el stock de un producto. \n", ACTUALIZAR);
+    printf("\033[0;32m(%d)\033[0m Para eliminar un producto. \n", ELIMINAR);
+    printf("\033[0;32m(%d)\033[0m Para salir del programa. \n", SALIR);
     scanf("%d",&choice);
     return choice;
 }
