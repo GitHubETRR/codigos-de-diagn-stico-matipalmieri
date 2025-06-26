@@ -20,15 +20,15 @@ int main(){
         scanf("%d", &opcion);
         getchar();
         switch(opcion){
-            case 1:
+            case AGREGAR:
                 printf("Ingresa un nombre: ");
                 fgets(nombre, sizeof(nombre), stdin);
                 guardar_nombre(nombre);
                 break;
-            case 2:
+            case MOSTRAR:
                 mostrar_nombres();
                 break;
-            case 3:
+            case SALIR:
                 printf("Saliendo...\n");
                 break;
         default:
