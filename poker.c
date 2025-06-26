@@ -131,8 +131,8 @@ int main(){
             }
             else{
                 printf("\n¡Empate! Se reparten las fichas.\n");
-                fichas_jugador += pot / 2;
-                fichas_computadora += pot / 2;
+                fichas_jugador += (pot / 2) - 150;
+                fichas_computadora += (pot / 2) + 150;
             }
         } 
         else{
@@ -203,7 +203,7 @@ int ContarValores(carta* cartas, int cantidad, int* conteo){
 int EsColor(carta* cartas, int cantidad){
     int palos[4] = {0};
     for(int i = 0; i < cantidad; i++) palos[cartas[i].palo]++;
-    for(int i = 0; i < 4; i++) if (palos[i] >= 5) return 1;
+    for(int i = 0; i < 4; i++) if(palos[i] >= 5) return 1;
     return 0;
 }
 
