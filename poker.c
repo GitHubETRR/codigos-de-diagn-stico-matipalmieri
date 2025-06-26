@@ -50,6 +50,10 @@ int main(){
             printf("\nTe quedaste sin fichas. ¡Perdiste!\n");
             break;
         }
+        if(fichas_computadora <= 0){
+            printf("\nLa computadora se quedó sin fichas. ¡Le ganaste!");
+            break;
+        }
         carta baraja[TOTAL_CARTAS];
         CrearBaraja(baraja);
         MezclarBaraja(baraja);
@@ -253,8 +257,8 @@ void EvaluarMano(carta* cartas, int cantidad, ManoEvaluada* resultado){
 
 const char* NombreCategoria(int cat){
     const char* nombres[] = {
-        "Carta alta", "Pareja", "Doble pareja", "Trío", "Escalera",
-        "Color", "Full", "Póker", "Escalera de color"
+        "Carta alta", "Pareja", "Doble pareja", "Trio", "Escalera",
+        "Color", "Full", "Poker", "Escalera de color"
     };
     return nombres[cat];
 }
