@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "file.h"
+#include "FileExt.h"
 
 void guardar_nombre(char *nombre){
     FILE *archivo = fopen("nombres.txt", "a"); // la a es porq guarda el dato al final, solo le doy un nombre porque quiero que abra dicho archivo en la misma carpeta donde estoy trabajando

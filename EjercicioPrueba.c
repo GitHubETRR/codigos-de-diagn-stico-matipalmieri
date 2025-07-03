@@ -79,10 +79,6 @@ int main(){
 
 contacto* CrearContacto(const char* nombre, const char* telefono, const char* email) {
     contacto* nuevo = (contacto*)malloc(sizeof(contacto));
-    if (nuevo == NULL) {
-        printf("\033[1;31mError al asignar memoria.\033[0m\n");
-        exit(1);
-    }
     strcpy(nuevo->nombre, nombre);
     strcpy(nuevo->telefono, telefono);
     strcpy(nuevo->email, email);
