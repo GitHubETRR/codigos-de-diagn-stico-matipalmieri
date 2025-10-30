@@ -1,47 +1,60 @@
+from enum import Enum
+
+pip install colorama #solo hace falta una vez y es para poder usar colorama
+from colorama import Fore init
+init(autoreset=True) #para que despues de cada print, vuelva a la normalidad
+
+class Menu(Enum):
+    AGREGAR = "1"
+    MOSTRAR = "2"
+    COMPLETAR = "3"
+    SALIR = "4"
+
 tareas = []
 
 def mostrar_menu():
-    print("\n - - - MENU DE TAREAS - - - ")
-    print("1. Agregar tarea")
-    print("2. Mostrar tareas")
-    print("3. Completar tarea")
-    print("4. Salir")
+    print(Fore.CYAN + "\n - - - MENU DE TAREAS - - - ")
+    print(f"{Menu.AGREGAR.value}. Agregar tarea")
+    print(f"{Menu.MOSTRAR.value}. Mostrar tareas")
+    print(f"{Menu.COMPLETAR.value}. Completar tarea")
+    print(f"{Menu.SALIR.value}. Salir")
 
 def agregar_tarea():
     tarea = input("Ingrese la tarea: ")
     tareas.append({"nombre": tarea, "completada": False})
-    print("Tarea agregada con éxito")
+    print(Fore.GREEN + "Tarea agregada exitosamente")
 
 def mostrar_tareas():
     if not tareas:
-        print("No hay tareas pendientes.")
+        print(Fore.RED + "No hay tareas pendientes")
     else:
         print("\nLista de tareas:")
         for i, t in enumerate(tareas):
-            estado = "ok" if t["completada"] else "no"
+            estado = "completa" if t["completada"] else "incompleta"
             print(f"{i+1}. {t['nombre']} [{estado}]")
 
 def completar_tarea():
     mostrar_tareas()
     if tareas:
-        num = int(input("Ingrese el numero de la tarea a completar: "))
+        num = int(input("Ingresa el numero de la tarea a completar: "))
         if 1 <= num <= len(tareas):
             tareas[num-1]["completada"] = True
-            print("Tarea completada con éxito")
+            print(Fore.GREEN + "Tarea completada exitosamente")
         else:
-            print("Numero inválido")
+            print(Fore.RED + "Numero invalido")
 
 while True:
     mostrar_menu()
-    opcion = input("Seleccione una opcion: ")
-    if opcion == "1":
+    opcion = input("\nSelecciona una opcion: ")
+
+    if opcion == Menu.AGREGAR.value:
         agregar_tarea()
-    elif opcion == "2":
+    elif opcion == Menu.MOSTRAR.value:
         mostrar_tareas()
-    elif opcion == "3":
+    elif opcion == Menu.COMPLETAR.value:
         completar_tarea()
-    elif opcion == "4":
-        print("¡Hasta luego!")
+    elif opcion == Menu.SALIR.value:
+        print("¡Hasta pronto!")
         break
     else:
-        print("Opcion invalida, intente nuevamente.")
+        print(Fore.RED + "Opcion invalida, intenta de nuevo")
