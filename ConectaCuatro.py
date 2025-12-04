@@ -76,7 +76,7 @@ def revisar_ganador(tablero, pieza):
     return False
 
 #de aca en adelante esta todo medio en piloto
-def puntaje_ventana(ventana, pieza):
+def puntaje_ventana(ventana, pieza): #no se si hacerlo de esta forma, capaz sea convenible solo tomar las ventanas de 4 y ya ganas y se reinicia
     puntaje = 0
     pieza_oponente = PLAYER_PIECE if pieza == AI_PIECE else AI_PIECE
 
