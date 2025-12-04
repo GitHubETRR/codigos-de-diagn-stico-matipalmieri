@@ -115,7 +115,7 @@ public:
         }
         cout << "\n--- Historial de Transacciones ---\n";
         string linea;
-        while (getline(archivo, linea)) cout << linea;
+        while (getline(archivo, linea)) cout << linea << "/n";
         archivo.close();
     }
 };
